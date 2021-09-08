@@ -2522,8 +2522,9 @@ paths:
         If you’re interested in Metrics without Limits&trade;, please contact your Customer Success Manager.**
     patch:
       description: |-
-        Update the tag configuration of a metric or percentile aggregations of a distribution metric. Can only be used with
-        application keys from users with the `Manage Tags for Metrics` permission.
+        Update the tag configuration of a metric or percentile aggregations of a distribution metric or custom aggregations
+        of a count, rate, or gauge metric.
+        Can only be used with application keys from users with the `Manage Tags for Metrics` permission.
       operationId: UpdateTagConfiguration
       parameters:
       - description: The name of the metric.
@@ -2584,7 +2585,9 @@ paths:
         If you’re interested in Metrics without Limits&trade;, please contact your Customer Success Manager.**
     post:
       description: |-
-        Create and define a list of queryable tag keys for an existing count/gauge/rate/distribution metric. Optionally, include percentile aggregations on any distribution metric.
+        Create and define a list of queryable tag keys for an existing count/gauge/rate/distribution metric.
+        Optionally, include percentile aggregations on any distribution metric or configure custom aggregations
+        on any count, rate, or gauge metric.
         Can only be used with application keys of users with the `Manage Tags for Metrics` permission.
       operationId: CreateTagConfiguration
       parameters:
@@ -9761,6 +9764,74 @@ components:
           $ref: '#/components/schemas/MetricAllTags'
       readOnly: true
       type: object
+    MetricCustomAggregation:
+      description: A time and space aggregation combination for use in query.
+      example:
+        space: sum
+        time: sum
+      properties:
+        space:
+          $ref: '#/components/schemas/MetricCustomSpaceAggregation'
+        time:
+          $ref: '#/components/schemas/MetricCustomTimeAggregation'
+      required:
+      - space
+      - time
+      type: object
+    MetricCustomAggregations:
+      description: |-
+        A list of custom aggregation combinations for a count, rate, or gauge metric.
+        Defaults to time sum & space sum for count and rate metrics, and time avg & space avg for gauge metrics.
+        Valid time & space combinations are as follows:
+        - time: avg, space: avg
+        - time: avg, space: max
+        - time: avg, space: min
+        - time: avg, space: sum
+        - time: count, space: sum
+        - time: max, space: max
+        - time: min, space: min
+        - time: sum, space: avg
+        - time: sum, space: sum
+
+        Can only be applied to metrics that have a `metric_type` of `count`, `rate`, or `gauge`.
+      example:
+      - space: sum
+        time: sum
+      - space: sum
+        time: count
+      items:
+        $ref: '#/components/schemas/MetricCustomAggregation'
+      type: array
+    MetricCustomSpaceAggregation:
+      description: A space aggregation for use in query.
+      enum:
+      - avg
+      - max
+      - min
+      - sum
+      example: sum
+      type: string
+      x-enum-varnames:
+      - AVG
+      - MAX
+      - MIN
+      - SUM
+    MetricCustomTimeAggregation:
+      description: A time aggregation for use in query.
+      enum:
+      - avg
+      - count
+      - max
+      - min
+      - sum
+      example: sum
+      type: string
+      x-enum-varnames:
+      - AVG
+      - COUNT
+      - MAX
+      - MIN
+      - SUM
     MetricDistinctVolume:
       description: Object for a single metric's distinct volume.
       properties:
@@ -9835,6 +9906,9 @@ components:
       description: Object for a single metric tag configuration.
       example:
         attributes:
+          aggregations:
+          - space: avg
+            time: avg
           created_at: 2020-03-31T09:48:37.463835Z
           metric_type: gauge
           modified_at: 2020-04-31T09:48:37.463835Z
@@ -9857,6 +9931,30 @@ components:
       description: Object containing the definition of a metric tag configuration
         attributes.
       properties:
+        aggregations:
+          description: |-
+            A list of custom aggregation combinations for a count, rate, or gauge metric.
+            Defaults to time sum & space sum for count and rate metrics, and time avg & space avg for gauge metrics.
+            Valid time & space combinations are as follows:
+            - time: avg, space: avg
+            - time: avg, space: max
+            - time: avg, space: min
+            - time: avg, space: sum
+            - time: count, space: sum
+            - time: max, space: max
+            - time: min, space: min
+            - time: sum, space: avg
+            - time: sum, space: sum
+
+            Can only be applied to metrics that have a `metric_type` of `count`, `rate`, or `gauge`.
+          example:
+          - space: sum
+            time: sum
+          - space: sum
+            time: count
+          items:
+            $ref: '#/components/schemas/MetricCustomAggregation'
+          type: array
         created_at:
           description: Timestamp when the tag configuration was created.
           example: 2020-03-31T09:48:37.463835Z
@@ -9889,6 +9987,30 @@ components:
       description: Object containing the definition of a metric tag configuration
         to be created.
       properties:
+        aggregations:
+          description: |-
+            A list of custom aggregation combinations for a count, rate, or gauge metric.
+            Defaults to time sum & space sum for count and rate metrics, and time avg & space avg for gauge metrics.
+            Valid time & space combinations are as follows:
+            - time: avg, space: avg
+            - time: avg, space: max
+            - time: avg, space: min
+            - time: avg, space: sum
+            - time: count, space: sum
+            - time: max, space: max
+            - time: min, space: min
+            - time: sum, space: avg
+            - time: sum, space: sum
+
+            Can only be applied to metrics that have a `metric_type` of `count`, `rate`, or `gauge`.
+          example:
+          - space: sum
+            time: sum
+          - space: sum
+            time: count
+          items:
+            $ref: '#/components/schemas/MetricCustomAggregation'
+          type: array
         include_percentiles:
           default: false
           description: |-
@@ -9975,6 +10097,9 @@ components:
       example:
         data:
           attributes:
+            aggregations:
+            - space: avg
+              time: avg
             created_at: 2020-03-31T09:48:37.463835Z
             metric_type: gauge
             modified_at: 2020-04-31T09:48:37.463835Z
@@ -10001,6 +10126,30 @@ components:
       description: Object containing the definition of a metric tag configuration
         to be updated.
       properties:
+        aggregations:
+          description: |-
+            A list of custom aggregation combinations for a count, rate, or gauge metric.
+            Defaults to time sum & space sum for count and rate metrics, and time avg & space avg for gauge metrics.
+            Valid time & space combinations are as follows:
+            - time: avg, space: avg
+            - time: avg, space: max
+            - time: avg, space: min
+            - time: avg, space: sum
+            - time: count, space: sum
+            - time: max, space: max
+            - time: min, space: min
+            - time: sum, space: avg
+            - time: sum, space: sum
+
+            Can only be applied to metrics that have a `metric_type` of `count`, `rate`, or `gauge`.
+          example:
+          - space: sum
+            time: sum
+          - space: sum
+            time: count
+          items:
+            $ref: '#/components/schemas/MetricCustomAggregation'
+          type: array
         include_percentiles:
           default: false
           description: |-
