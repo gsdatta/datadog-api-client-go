@@ -25497,7 +25497,7 @@ components:
     UsageBillableSummaryHour:
       description: Response with monthly summary of data billed by Datadog.
       example:
-        end_date: 2000-01-23T04:56:07.000+00:00
+        end_date: 2000-01-23
         num_orgs: 0
         ratio_in_month: 6
         usage:
@@ -25760,14 +25760,14 @@ components:
         billing_plan: billing_plan
         org_name: org_name
         public_id: public_id
-        start_date: 2000-01-23T04:56:07.000+00:00
+        start_date: 2000-01-23
       properties:
         billing_plan:
           description: The billing plan.
           type: string
         end_date:
           description: Shows the last date of usage.
-          format: date-time
+          format: date
           type: string
         num_orgs:
           description: The number of organizations.
@@ -25785,7 +25785,7 @@ components:
           type: integer
         start_date:
           description: Shows the first date of usage.
-          format: date-time
+          format: date
           type: string
         usage:
           $ref: '#/components/schemas/UsageBillableSummaryKeys'
@@ -26119,7 +26119,7 @@ components:
       description: Response with monthly summary of data billed by Datadog.
       example:
         usage:
-        - end_date: 2000-01-23T04:56:07.000+00:00
+        - end_date: 2000-01-23
           num_orgs: 0
           ratio_in_month: 6
           usage:
@@ -26382,8 +26382,8 @@ components:
           billing_plan: billing_plan
           org_name: org_name
           public_id: public_id
-          start_date: 2000-01-23T04:56:07.000+00:00
-        - end_date: 2000-01-23T04:56:07.000+00:00
+          start_date: 2000-01-23
+        - end_date: 2000-01-23
           num_orgs: 0
           ratio_in_month: 6
           usage:
@@ -26646,7 +26646,7 @@ components:
           billing_plan: billing_plan
           org_name: org_name
           public_id: public_id
-          start_date: 2000-01-23T04:56:07.000+00:00
+          start_date: 2000-01-23
       properties:
         usage:
           description: An array of objects regarding usage of billable summary.
