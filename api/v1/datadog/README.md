@@ -217,6 +217,7 @@ Class | Method | HTTP request | Description
 *SyntheticsApi* | [**GetAPITest**](docs/SyntheticsApi.md#getapitest) | **Get** /api/v1/synthetics/tests/api/{public_id} | Get an API test
 *SyntheticsApi* | [**GetAPITestLatestResults**](docs/SyntheticsApi.md#getapitestlatestresults) | **Get** /api/v1/synthetics/tests/{public_id}/results | Get an API test&#39;s latest results summaries
 *SyntheticsApi* | [**GetAPITestResult**](docs/SyntheticsApi.md#getapitestresult) | **Get** /api/v1/synthetics/tests/{public_id}/results/{result_id} | Get an API test result
+*SyntheticsApi* | [**GetBatch**](docs/SyntheticsApi.md#getbatch) | **Get** /api/v1/synthetics/ci/batch/{batch_id} | Get details of batch
 *SyntheticsApi* | [**GetBrowserTest**](docs/SyntheticsApi.md#getbrowsertest) | **Get** /api/v1/synthetics/tests/browser/{public_id} | Get a browser test
 *SyntheticsApi* | [**GetBrowserTestLatestResults**](docs/SyntheticsApi.md#getbrowsertestlatestresults) | **Get** /api/v1/synthetics/tests/browser/{public_id}/results | Get a browser test&#39;s latest results summaries
 *SyntheticsApi* | [**GetBrowserTestResult**](docs/SyntheticsApi.md#getbrowsertestresult) | **Get** /api/v1/synthetics/tests/browser/{public_id}/results/{result_id} | Get a browser test result
@@ -669,6 +670,9 @@ Class | Method | HTTP request | Description
  - [SyntheticsAssertionTarget](docs/SyntheticsAssertionTarget.md)
  - [SyntheticsAssertionType](docs/SyntheticsAssertionType.md)
  - [SyntheticsBasicAuth](docs/SyntheticsBasicAuth.md)
+ - [SyntheticsBatchDetails](docs/SyntheticsBatchDetails.md)
+ - [SyntheticsBatchDetailsData](docs/SyntheticsBatchDetailsData.md)
+ - [SyntheticsBatchResult](docs/SyntheticsBatchResult.md)
  - [SyntheticsBrowserError](docs/SyntheticsBrowserError.md)
  - [SyntheticsBrowserErrorType](docs/SyntheticsBrowserErrorType.md)
  - [SyntheticsBrowserTest](docs/SyntheticsBrowserTest.md)
@@ -681,11 +685,11 @@ Class | Method | HTTP request | Description
  - [SyntheticsBrowserTestType](docs/SyntheticsBrowserTestType.md)
  - [SyntheticsBrowserVariable](docs/SyntheticsBrowserVariable.md)
  - [SyntheticsBrowserVariableType](docs/SyntheticsBrowserVariableType.md)
+ - [SyntheticsCIBatchMetadata](docs/SyntheticsCIBatchMetadata.md)
+ - [SyntheticsCIBatchMetadataCI](docs/SyntheticsCIBatchMetadataCI.md)
+ - [SyntheticsCIBatchMetadataGit](docs/SyntheticsCIBatchMetadataGit.md)
  - [SyntheticsCITest](docs/SyntheticsCITest.md)
  - [SyntheticsCITestBody](docs/SyntheticsCITestBody.md)
- - [SyntheticsCITestMetadata](docs/SyntheticsCITestMetadata.md)
- - [SyntheticsCITestMetadataCi](docs/SyntheticsCITestMetadataCi.md)
- - [SyntheticsCITestMetadataGit](docs/SyntheticsCITestMetadataGit.md)
  - [SyntheticsCheckType](docs/SyntheticsCheckType.md)
  - [SyntheticsConfigVariable](docs/SyntheticsConfigVariable.md)
  - [SyntheticsConfigVariableType](docs/SyntheticsConfigVariableType.md)
@@ -719,6 +723,7 @@ Class | Method | HTTP request | Description
  - [SyntheticsSSLCertificate](docs/SyntheticsSSLCertificate.md)
  - [SyntheticsSSLCertificateIssuer](docs/SyntheticsSSLCertificateIssuer.md)
  - [SyntheticsSSLCertificateSubject](docs/SyntheticsSSLCertificateSubject.md)
+ - [SyntheticsStatus](docs/SyntheticsStatus.md)
  - [SyntheticsStep](docs/SyntheticsStep.md)
  - [SyntheticsStepDetail](docs/SyntheticsStepDetail.md)
  - [SyntheticsStepDetailWarning](docs/SyntheticsStepDetailWarning.md)
@@ -727,6 +732,7 @@ Class | Method | HTTP request | Description
  - [SyntheticsTestDetails](docs/SyntheticsTestDetails.md)
  - [SyntheticsTestDetailsSubType](docs/SyntheticsTestDetailsSubType.md)
  - [SyntheticsTestDetailsType](docs/SyntheticsTestDetailsType.md)
+ - [SyntheticsTestExecutionRule](docs/SyntheticsTestExecutionRule.md)
  - [SyntheticsTestMonitorStatus](docs/SyntheticsTestMonitorStatus.md)
  - [SyntheticsTestOptions](docs/SyntheticsTestOptions.md)
  - [SyntheticsTestOptionsMonitorOptions](docs/SyntheticsTestOptionsMonitorOptions.md)
